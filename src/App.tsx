@@ -114,6 +114,19 @@ function App() {
     return () => window.removeEventListener('keydown', handler);
   }, []);
 
+  // Re-open sidebar when viewport crosses back to desktop breakpoint
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 1024px)');
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        setSidebarOpen(true);
+        setSidebarCollapsed(false);
+      }
+    };
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+
   // ── Derived values ──
 
   const activeTitle = sections[activeSection]?.title ?? 'React Crash Course';
