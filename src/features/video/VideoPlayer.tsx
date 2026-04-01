@@ -52,15 +52,18 @@ export const VideoPlayer = memo(function VideoPlayer({ narration, onClose }: Vid
               {narration.title}
             </span>
           </div>
-          <button
-            onClick={onClose}
-            className="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500"
-            title="Close (Esc)"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div className="flex items-center gap-3">
+            <ProgressDots total={totalSlides} current={currentSlide} onNavigate={goToSlide} />
+            <button
+              onClick={onClose}
+              className="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500"
+              title="Close (Esc)"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Slide area */}
@@ -96,40 +99,36 @@ export const VideoPlayer = memo(function VideoPlayer({ narration, onClose }: Vid
             </svg>
           </button>
 
-          <div className="flex items-center gap-4">
-            <button
-              onClick={playerState === 'idle' ? startPlayback : togglePlayPause}
-              className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 ${
-                playerState === 'loading'
-                  ? 'bg-gray-200 dark:bg-gray-700 cursor-wait'
-                  : 'bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:scale-105'
-              }`}
-              disabled={playerState === 'loading'}
-              title={
-                playerState === 'idle'
-                  ? 'Play narration (Space)'
-                  : playerState === 'playing'
-                    ? 'Pause (Space)'
-                    : playerState === 'paused' || playerState === 'ended'
-                      ? 'Play (Space)'
-                      : 'Loading...'
-              }
-            >
-              {playerState === 'loading' ? (
-                <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
-              ) : playerState === 'playing' ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              )}
-            </button>
-
-            <ProgressDots total={totalSlides} current={currentSlide} onNavigate={goToSlide} />
-          </div>
+          <button
+            onClick={playerState === 'idle' ? startPlayback : togglePlayPause}
+            className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 ${
+              playerState === 'loading'
+                ? 'bg-gray-200 dark:bg-gray-700 cursor-wait'
+                : 'bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:scale-105'
+            }`}
+            disabled={playerState === 'loading'}
+            title={
+              playerState === 'idle'
+                ? 'Play narration (Space)'
+                : playerState === 'playing'
+                  ? 'Pause (Space)'
+                  : playerState === 'paused' || playerState === 'ended'
+                    ? 'Play (Space)'
+                    : 'Loading...'
+            }
+          >
+            {playerState === 'loading' ? (
+              <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+            ) : playerState === 'playing' ? (
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
+          </button>
 
           <button
             onClick={goNext}
