@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* Markdown prose styles */
+.prose-content h3 {
+  @apply text-xl font-semibold mt-10 mb-4 text-gray-900 dark:text-gray-100;
+}
+.prose-content h4 {
+  @apply text-lg font-semibold mt-8 mb-3 text-gray-800 dark:text-gray-200;
+}
+.prose-content p {
+  @apply mb-4 leading-relaxed text-gray-700 dark:text-gray-300;
+}
+.prose-content ul {
+  @apply mb-5 pl-6 list-disc space-y-1;
+}
+.prose-content ol {
+  @apply mb-5 pl-6 list-decimal space-y-1;
+}
+.prose-content li {
+  @apply text-gray-700 dark:text-gray-300 leading-relaxed;
+}
+.prose-content li > ul,
+.prose-content li > ol {
+  @apply mt-1 mb-0;
+}
+.prose-content strong {
+  @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+.prose-content em {
+  @apply italic;
+}
+.prose-content blockquote {
+  @apply border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-1 my-6 bg-blue-50 dark:bg-blue-900/20 rounded-r-lg;
+}
+.prose-content blockquote p {
+  @apply text-gray-600 dark:text-gray-400 italic mb-0;
+}
+.prose-content hr {
+  @apply my-10 border-gray-200 dark:border-gray-800;
+}
+.prose-content a {
+  @apply text-blue-600 dark:text-blue-400 underline decoration-blue-300 dark:decoration-blue-700 underline-offset-2 hover:decoration-blue-500 transition-colors;
+}
+
+/* Table styling */
+.prose-content table {
+  @apply w-full mb-6 text-sm border-collapse rounded-lg overflow-hidden;
+}
+.prose-content thead {
+  @apply bg-gray-50 dark:bg-gray-800/80;
+}
+.prose-content th {
+  @apply text-left p-3 font-semibold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700;
+}
+.prose-content td {
+  @apply p-3 border-b border-gray-100 dark:border-gray-800 text-gray-600 dark:text-gray-400;
+}
+.prose-content tbody tr:hover {
+  @apply bg-gray-50/50 dark:bg-gray-800/30;
+}
+
+/* Inline code */
+.prose-content code:not(pre code):not(.code-block) {
+  @apply px-1.5 py-0.5 rounded text-[0.85em] bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 font-mono font-medium;
+}
+
+/* Code block overrides */
+.code-block-wrapper {
+  @apply my-5 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50 shadow-sm;
+}
+.code-block-wrapper .code-header {
+  @apply flex items-center justify-between px-4 py-2.5 bg-gray-100 dark:bg-[#1e1e2e] text-xs font-mono;
+}
+.code-block-wrapper .code-header .lang-label {
+  @apply text-gray-500 dark:text-gray-500 uppercase tracking-wider font-semibold;
+}
+
+/* Section transition */
+.section-enter {
+  animation: fadeInUp 0.3s ease-out;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Bottom completion button: confetti & celebration ─── */
+
+.confetti-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 10;
+}
+
+.confetti-particle {
+  position: absolute;
+  animation: confetti-burst 1s cubic-bezier(0.15, 0.6, 0.35, 1) forwards;
+  opacity: 1;
+}
+
+@keyframes confetti-burst {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--spin)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Bounce on the button itself when celebrating */
+.complete-bounce {
+  animation: celebrateBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes celebrateBounce {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.15); }
+  50% { transform: scale(0.95); }
+  75% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Celebration message fade-in-up */
+.celebration-message {
+  animation: celebrationFadeIn 0.4s ease-out 0.15s both;
+}
+
+@keyframes celebrationFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─── Video slideshow: bullet entrance animation ─── */
+
+.slide-bullet-enter {
+  animation: bulletSlideIn 0.4s ease-out both;
+}
+
+@keyframes bulletSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

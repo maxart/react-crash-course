@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="page" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f0ff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Open book — left page -->
+  <path d="M10 16 Q10 12 14 12 L30 12 Q32 12 32 14 L32 48 Q32 46 30 46 L14 46 Q10 46 10 42 Z" fill="url(#page)" opacity="0.95"/>
+  <!-- Open book — right page -->
+  <path d="M54 16 Q54 12 50 12 L34 12 Q32 12 32 14 L32 48 Q32 46 34 46 L50 46 Q54 46 54 42 Z" fill="url(#page)" opacity="0.85"/>
+  <!-- Book spine highlight -->
+  <line x1="32" y1="12" x2="32" y2="48" stroke="#818cf8" stroke-width="1" opacity="0.6"/>
+  <!-- React atom — elliptical orbits -->
+  <ellipse cx="32" cy="30" rx="12" ry="4.5" fill="none" stroke="#61dafb" stroke-width="1.6" opacity="0.9"/>
+  <ellipse cx="32" cy="30" rx="12" ry="4.5" fill="none" stroke="#61dafb" stroke-width="1.6" opacity="0.9" transform="rotate(60 32 30)"/>
+  <ellipse cx="32" cy="30" rx="12" ry="4.5" fill="none" stroke="#61dafb" stroke-width="1.6" opacity="0.9" transform="rotate(-60 32 30)"/>
+  <!-- React atom — nucleus -->
+  <circle cx="32" cy="30" r="2.8" fill="#61dafb"/>
+  <!-- Subtle "lines of text" on left page -->
+  <line x1="15" y1="40" x2="25" y2="40" stroke="#a5b4fc" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="15" y1="43" x2="22" y2="43" stroke="#a5b4fc" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Subtle "lines of text" on right page -->
+  <line x1="39" y1="40" x2="49" y2="40" stroke="#a5b4fc" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="39" y1="43" x2="46" y2="43" stroke="#a5b4fc" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+</svg>
