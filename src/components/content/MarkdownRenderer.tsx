@@ -120,8 +120,8 @@ interface MarkdownRendererProps {
  * never changes, this avoids re-parsing markdown on parent re-renders.
  */
 const MarkdownRenderer = memo(function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  // Strip the section header — the parent renders it separately.
-  const bodyContent = content.replace(/^## \d+\. .+\n+/, '');
+  // Strip the section header (parent renders it) and trailing hr (parent renders section divider).
+  const bodyContent = content.replace(/^## \d+\. .+\n+/, '').replace(/\n---\s*$/, '');
 
   return (
     <ReactMarkdown

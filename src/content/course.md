@@ -3041,5 +3041,3 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 7. **Read the React docs.** The new docs at [react.dev](https://react.dev) are exceptional — they explain concepts in depth with interactive examples. The "Escape Hatches" section alone is worth an afternoon.
 
 ---
-
-*Last updated: March 2026. React 19 / Next.js 15 era.*
